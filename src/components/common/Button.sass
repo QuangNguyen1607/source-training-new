@@ -1,0 +1,62 @@
+.btn
+	@apply cursor-pointer select-none transition-all duration-300
+	&.btn-discovery
+		@apply rem:min-w-[200px] rem:h-[48px] text-white uppercase text-base px-6 inline-flex items-center rem:rounded-[50px] leading-normal gap-2 font-bold relative z-2 whitespace-nowrap justify-between
+		&::before,&::after
+			@apply absolute-full -z-1 rem:rounded-[50px] transition-all duration-500
+		&::before
+			content: ''
+			@apply bg-primary-700 opacity-100
+		&::after
+			content: ''
+			background: linear-gradient(45deg, #FFCCD9 0%, #7339D5 50.52%, #0028A8 100%)
+			@apply opacity-0
+		&.white
+			@apply text-primary-700 hover:text-white rem:h-[44px]
+			svg,rect,path
+				@apply transition-300
+			&:hover,&.active
+				svg
+					rect
+						@apply fill-white
+					path
+						@apply stroke-primary-600
+			&::before
+				@apply bg-white
+		&:hover
+			&::before
+				@apply opacity-0
+			&::after
+				@apply opacity-100
+		span
+			@apply inline-block leading-none pt-1 mr-1
+	&.btn-sw-1
+		@apply flex-center w-15 h-15 border border-primary-700 rounded-1 overflow-hidden z-2
+		&:hover
+			&::before
+				@apply brightness-0 invert
+			&::after
+				@apply w-full
+		&::after
+			content: ''
+			@apply bg-primary-700 transition-all absolute -z-1 h-full w-0 duration-300
+		&::before
+			content: ''
+			@apply rem:w-[37px] rem:h-[37px] bg-[length:100%_100%] bg-no-repeat inline-block transition-all duration-300
+	&.btn-prev
+		&::after
+			@apply right-0 top-0
+		&::before
+			background-image: url('../img/icon/arrow-left.svg')
+	&.btn-next
+		&::after
+			@apply left-0 top-0
+		&::before
+			background-image: url('../img/icon/arrow-left.svg')
+			@apply rotate-180
+	&.btn-video
+		@apply flex items-center gap-3
+		svg
+			@apply w-8 h-8
+		span
+			@apply font-bold uppercase text-primary-700 leading-normal

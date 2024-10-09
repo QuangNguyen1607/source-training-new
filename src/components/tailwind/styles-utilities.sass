@@ -1,0 +1,103 @@
+@layer utilities
+	.section-py
+		@apply py-10 lg:py-15 xl:py-20
+	.no-gutters
+		@apply mx-0
+		> *
+			@apply px-0
+	.bg-gradient
+		background: linear-gradient(45deg, #FFCCD9 0%, #7339D5 50.52%, #0028A8 100%)
+	.btn-hover-gradient
+		background: linear-gradient(45deg, #FFCCD9 0%, #7339D5 50.52%, #0028A8 100%)
+		@apply relative overflow-hidden z-1
+		&:hover
+			&::before
+				opacity: 0
+		&::before
+			content: ''
+			@apply absolute-full -z-1 opacity-100 transition-300 bg-white
+	.lozad
+		opacity: 0
+		filter: blur(10px)
+		transition: .3s all ease-in-out
+		&[data-loaded="true"]
+			opacity: 1
+			filter: blur(0)
+	.tab-center
+		@apply flex-wrap justify-center
+		// li
+		// 	&:first-child
+		// 		@apply ml-auto
+		// 	&:last-child
+		// 		@apply mr-auto
+	.wrap-tab-primary
+		li
+			a
+				@apply justify-center #{!important}
+			&.active
+				a
+					@apply text-white #{!important}
+					&::before
+						@apply opacity-0
+					&::after
+						@apply opacity-100
+	.text-gradient
+		-webkit-text-stroke-width: rr(2px)
+		-webkit-text-stroke-color: white
+		-webkit-text-fill-color: transparent
+		-webkit-background-clip: text !important
+		background: transparent
+		background: linear-gradient(45deg, #FFCCD9 0%, #7339D5 50.52%, #0028A8 100%)
+		@apply transition-all duration-300
+	body
+		&:not(.homepage, .section-winner)
+			main
+				background-image: url('../img/bg-section-1.jpg')
+				background-position: top
+				background-repeat: no-repeat
+				background-size: cover
+	@screen lg
+		.transition-left
+			opacity: 0
+			transform: translateX(5rem)
+			transition: opacity .8s cubic-bezier(.4,0,.68,.06),transform 1.2s cubic-bezier(.77,0,.18,1)
+			&.is-inview
+				opacity: 100
+				transform: translateX(0)
+		.transition-right
+			opacity: 0
+			transform: translateX(-5rem)
+			transition: opacity .8s cubic-bezier(.4,0,.68,.06),transform 1.2s cubic-bezier(.77,0,.18,1)
+			&.is-inview
+				opacity: 100
+				transform: translateX(0)
+		.transition-top
+			opacity: 0
+			transform: translateY(5rem)
+			transition: opacity .8s cubic-bezier(.4,0,.68,.06),transform 1.2s cubic-bezier(.77,0,.18,1)
+			&.is-inview
+				opacity: 100
+				transform: translateY(0)
+		.transition-bottom
+			opacity: 0
+			transform: translateY(-5rem)
+			transition: opacity .8s cubic-bezier(.4,0,.68,.06),transform 1.2s cubic-bezier(.77,0,.18,1)
+			&.is-inview
+				opacity: 100
+				transform: translateY(0)
+	.ajaxResponse
+		@apply relative
+		@apply min-h-screen
+		&>div:not(.loading)
+			@apply opacity-100 translate-y-0 transition-all duration-300  relative
+		&.notShow
+			&>div:not(.loading)
+				@apply opacity-0 translate-y-10
+	.loading
+		@apply absolute-full z-10 bg-transparent transition-all duration-300 flex justify-center pt-[10vh] pointer-events-none
+		&::before,&::after
+			content: ''
+			animation-duration: 400ms !important
+			@apply w-15 h-15 rem:border-[8px] border-neutral-200 rounded-full animate-spin absolute
+		&::after
+			@apply border-transparent border-t-primary-600

@@ -1,0 +1,309 @@
+@layer components
+	.item-project-related
+		.img
+			@apply relative
+			&::before
+				content: ''
+				background: linear-gradient(180deg, rgba(0, 0, 0, 0) 50%, #000000 100%)
+				opacity: .7
+				@apply w-full h-full absolute pointer-events-none z-10
+	.edge
+		@apply hidden lg:block
+	.item-product-main
+		@apply bg-white rounded-5 border-2 border-white transition-all duration-300 p-5
+		@apply hover:border-2 hover:border-primary-500
+		// @apply min-h-[calc(358/1920*100rem)]
+		&:hover
+			a
+				@apply text-primary-500
+			.wrap-button
+				opacity: 1
+				@apply translate-y-0
+		a.text-2xl
+			@media (max-width: 1023.98px)
+				+line(1)
+		.wrap-button
+			opacity: 0
+			@apply transition-all duration-300 translate-y-4
+	.tab-style-1
+		@apply  gap-5 lg:gap-10 overflow-auto
+		li
+			&:first-child
+				margin-left: auto
+			&:last-child
+				margin-right: auto
+			&.active
+				a
+					@apply bg-primary-500 text-white
+			a
+				@apply flex flex-center px-7 md:px-5 h-[calc(46/1920*100rem)] bg-background-2 uppercase font-bold hover:bg-primary-500 hover:text-white transition-all duration-300 whitespace-nowrap text-base md:text-lg
+	.pagination-primary
+		@apply static flex flex-center gap-2 mt-10 lg:hidden
+		.swiper-pagination-bullet
+			@apply bg-white rounded-none outline outline-1 outline-offset-3 outline-white flex
+	.item-candidate
+		@apply overflow-hidden
+		.name
+			background: linear-gradient(180deg, rgba(245, 245, 245, 0.80) 0%, rgba(255, 255, 255, 0.60) 100%)
+			@apply leading-[1.2]
+			h3
+				@apply uppercase text-base lg:text-xl font-bold
+			p
+				@apply text-sm lg:text-base
+		&:hover
+			.btn-discovery
+				@screen xl
+					@apply opacity-100 top-[40%] lg:top-[35%] pointer-events-auto
+		.btn-discovery
+			@apply absolute #{!important}
+			@apply left-1/2 -translate-x-1/2 top-[35%] lg:top-[45%] translate-y-1/2 xl:opacity-0 transition-500 pointer-events-none
+	.item-box-content
+		.box-content
+			rect,path
+				@apply transition-300
+			svg
+				@apply flex-shrink-0
+			&:hover
+				rect
+					@apply fill-white
+				path
+					@apply stroke-primary-700
+	.wrap-gallery-images
+		@apply gap-[5px] md:gap-[15px] lg:gap-8 flex flex-wrap
+		.item-gallery-img
+			@apply basis-[calc(50%-1.5625rem)] md:basis-[calc(33.33333%-1.5625rem)] flex-grow rounded-xl overflow-hidden
+			.play-video
+				@apply w-10 h-10 mb-4 rounded-full border-2 border-white flex-center flex-shrink-0
+				path
+					@apply fill-white
+			.img
+				@apply pt-[calc(270/480*100%)]
+			&:nth-child(5n+1),&:nth-child(5n+2)
+				@apply basis-[calc(50%-1.5625rem)]
+				&:not(:nth-child(5n+2))
+					@apply xs:max-md:basis-[100%]
+				.img
+					@apply pt-[calc(414/736*100%)]
+	.item-box-prize
+		@apply flex flex-col h-full lg:rem:h-[720px]
+		&:hover
+			@screen lg
+				.box-content
+					@apply basis-[100%] #{!important}
+					.wrap-hidden
+						@apply delay-200
+						grid-template-rows: 1fr
+						.content
+							& > *
+								@apply opacity-100
+		.img
+			@apply xs:max-lg:img-ratio xs:max-lg:pt-[calc(600/736*100%)] lg:rem:basis-[600px] transition-all duration-[400ms]  rem:rounded-t-[40px] overflow-hidden
+		.box-content
+			@apply lg:rem:basis-[50px] flex-grow rem:rounded-b-[40px] overflow-hidden
+			@apply px-8 py-6 lg:px-10 lg:py-8
+			transition: all .5s ease-in-out
+			.wrap-hidden
+				@screen lg
+					display: grid
+					grid-template-rows: 0fr
+					transition: grid-template-rows 0.3s ease-in-out
+				.content
+					@apply pt-4
+					@screen lg
+						@apply overflow-hidden transition-all duration-300
+						& > *
+							@apply opacity-0 transition-all duration-200
+					.btn
+						@apply mt-auto
+				.box-mb
+					@apply mb-4
+			h3
+				@apply md:text-4xl lg:text-5xl font-bold text-primary-700 leading-tight
+	.title-outline
+		-webkit-text-stroke-width: rr(2px)
+		-webkit-text-stroke-color: #0d1181
+		font-variant: tabular-nums
+		-webkit-text-fill-color: transparent
+		-webkit-background-clip: text !important
+		background: transparent
+		@apply transition-all duration-300
+	.text-hover-underline
+		@apply pb-2
+		+hover-underline(95%, white)
+	.section-bg
+		main
+			background-image: url('../img/bg-section-1.jpg')
+			background-position: top
+			background-repeat: no-repeat
+			background-size: cover
+	.section-winner
+		main
+			background-color: #4f29b3
+			// background-image: url('../img/bg-winner.jpg')
+			// background-position: top
+			// background-repeat: no-repeat
+			// background-size: cover
+		.global-breadcrumb
+			ol
+				li
+					&:before
+						@apply brightness-0 invert
+					a
+						&:before
+							@apply brightness-0 invert
+						@apply text-white
+	.popup-style-primary
+		@apply rem:max-w-[1110px] bg-white rem:rounded-[40px] px-10 pb-5 lg:py-15 pt-5
+		@apply flex flex-col-reverse
+		.carousel__button
+			@apply ml-auto w-9 h-9 lg:w-7.5 lg:h-7.5 p-2 bg-primary-300 mb-4 rem:translate-x-[20px] absolute top-5 right-10 #{!important}
+			svg
+				@apply stroke-primary-700
+	.rounded-style-primary
+		@apply rem:rounded-[120px] rounded-bl-none #{!important}
+	.wrap-form-nominations
+		.text-verticle
+			@screen md
+				writing-mode: vertical-rl
+				text-orientation: mixed
+		.wrap-tab-content
+			@apply bg-white rem:rounded-b-[40px]
+		.headline-form
+			@apply flex justify-between bg-primary-300 rem:min-h-[50px] rem:rounded-t-[40px] items-center px-8
+			span
+				@apply text-primary-700 text-xl lg:text-xl font-bold
+		.wrap-tab-option
+			.tab-options
+				.item-option
+					@apply hover:bg-primary-700 hover:text-white transition-300 relative
+					input
+						@apply absolute-full
+					&.active
+						@apply bg-primary-700 text-white
+		.tab-nominations-form
+			@apply relative overflow-hidden
+			form
+				@apply w-full
+			&::before
+				content: ''
+				background-image: url('../img/border-dashed.png')
+				background-size: 100%
+				@apply absolute left-0 rem:top-[50px] w-[1px] h-[87%] hidden md:block
+			.title
+				@apply text-xl font-bold mb-5
+			.wrap-3-cols
+				@apply grid grid-cols-1 md:grid-cols-3 gap-3
+			.frm-submit
+				@apply relative flex-row-reverse
+				input
+					@apply absolute-full text-left px-6
+			.form-group
+				@apply mb-3
+				input:not([type="submit"]):not([type="file"]):not([type="checkbox"]),textarea
+					@apply rem:rounded-[40px] px-5 py-3 w-full bg-neutral-50 text-sm placeholder:text-neutral-700 transition-300 border border-transparent outline-none h-[40px] md:h-10 flex items-center
+					@apply hocus:border-primary-300
+				select
+					@apply rem:rounded-[40px] px-5 h-[40px] md:h-10 w-full bg-neutral-50 text-sm appearance-none placeholder:text-neutral-700
+					background-image: url('../img/arrow-circle-down.svg')
+					background-size: rr(30px)
+					background-repeat: no-repeat
+					background-position: right rr(10px) center
+					@screen md
+						background-position: right rr(10px) center
+				textarea
+					@apply h-20 rem:rounded-[8px]
+				.RadPicker
+					@apply block w-full #{!important}
+					@apply bg-neutral-50 rem:rounded-[40px]
+					.rcCalPopup
+						@apply mr-3
+					.RadDateTimePicker
+						@apply w-full #{!important}
+					.rcTable
+						@apply w-full bg-neutral-50 rem:rounded-[40px]
+					.riTextBox
+						@apply border-transparent #{!important}
+			.form-input-file
+				@apply relative
+				input
+					@apply absolute-full opacity-0
+				label
+					@apply rem:rounded-[40px] px-5 py-3 w-full bg-neutral-50 text-sm placeholder:text-neutral-700 transition-300 border border-transparent outline-none flex items-center justify-between h-[40px] md:h-10 pr-2
+					span
+						@apply line-clamp-1
+				.RadUpload
+					@apply absolute-full
+					&>ul
+						@apply w-full h-full relative
+						.ruFileWrap
+							@apply static #{!important}
+						input[type="file"].ruFileInput
+							@apply absolute-full
+						.ruUploadSuccess,.ruUploadProgress
+							@apply hidden pointer-events-none
+						// &>li
+						// 	@apply w-full h-full
+						// 	&>span
+						// 		@apply block w-full h-full
+
+			.wrap-2-cols
+				@apply grid grid-cols-1 md:grid-cols-2 gap-3
+			.wrap-3-cols-variant
+				@apply grid grid-cols-1 md:grid-cols-3 gap-3
+				.wrap-form-input-file,.form-group
+					@apply col-span-2
+			.note
+				@apply text-sm text-neutral-700 mt-5 ml-1 pointer-events-none
+				strong
+					@apply text-red-500
+			.form-checkbox
+				@apply flex items-start gap-2 mt-5.5 select-none
+				p
+					@apply text-sm
+					a
+						@apply text-primary-700 underline
+		.wrap-inputted-file
+			@apply border-neutral-100 border-t pt-5 mt-5 gap-2 flex flex-col
+			.item-inputted-file
+				@apply flex items-center justify-between text-primary-700 text-sm cursor-pointer hover:text-primary-900 transition-all
+				&:hover
+					circle
+						@apply fill-primary-900
+					path
+						@apply fill-white
+				svg
+					@apply w-5 h-5
+					circle
+						@apply transition-300
+	.wrap-tab-white
+		@apply overflow-auto flex items-center gap-4
+		li
+			&.active
+				a
+					@apply bg-white
+			a
+				@apply rem:w-[84px] rem:h-[44px] bg-white/60 text-primary-700 flex-center transition-all rem:rounded-[40px] leading-none font-bold
+	.tabs-white
+		a
+			@apply opacity-60
+			&.active-opacity
+				@apply opacity-100
+	.carousel__button.is-close
+		@apply bg-primary-300 rounded-full p-2.5 hover:bg-primary-700 transition-300
+		&:hover
+			svg
+				@apply stroke-white
+		svg
+			@apply stroke-black
+	.fancybox__slide.has-video
+		.fancybox__content
+			@apply lg:w-full lg:h-full lg:max-w-[1200px] lg:max-h-[640px] #{!important}
+	.search-top
+		.col-12
+			@apply w-full
+		.search-title
+			@apply mb-2
+		.search-title,.searchresultsummary
+			@apply text-center text-xl
+			span
+				@apply font-bold
